@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('login', 'LoginController@login');
+Route::post('login', 'LoginController@login');
 
 Route::get('perfil/atleta/{id}','PersonaController@atleta');
 Route::get('perfil/entrenador/{id}','PersonaController@entrenador');
