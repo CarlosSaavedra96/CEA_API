@@ -23,4 +23,15 @@ class PersonaController extends Controller
     public function entrenador($id){
 
     }
+
+    public function entrenadorAtleta($id){
+        $entrenador = Persona::join('entrenador_has_atleta','entrenador_has_atleta.entrenador_persona_idpersona','=','persona.idpersona')
+                            ->where('entrenador_has_atleta.atleta_persona_idpersona',$id)
+                            ->pluck('persona.nombrecompleto');
+        return response()->json([
+            'data'=>[
+                'nombre'=> $entrenador
+            ]
+        ]);
+    }
 }
