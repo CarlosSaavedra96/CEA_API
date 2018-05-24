@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Persona;
 use App\Http\Resources\Atleta as AtletaResource;
 use App\Http\Resources\Entrenador as EntrenadorResource;
+use App\Http\Resources\AtletasEntrenadorCollection;
 
 class PersonaController extends Controller
 {
@@ -40,5 +41,12 @@ class PersonaController extends Controller
                 'nombre'=> $entrenador
             ]
         ]);
+    }
+
+    public function atletasEntrenador($id){
+        $atletas = Persona::join('entrenador_has_atleta','entrenador_has_atleta.atleta_persona_idpersona', '=', 'persona.idpersona')
+                        ->where('entrenador_has_atleta.entrenador_persona_idpersona',$id)
+                        ->get();
+        return new AtletasEntrenadorCollection($atletas);
     }
 }

@@ -18,6 +18,7 @@ Route::get('login', 'LoginController@login');
 Route::get('perfil/atleta/{id}','PersonaController@atleta');
 Route::get('perfil/entrenador/{id}','PersonaController@entrenador');
 Route::get('entrenador/{id}','PersonaController@entrenadorAtleta');
+Route::get('atletas/{id}','PersonaController@atletasEntrenador');
 
 Route::get('competencias/{id}','CompetenciasController@get');
 
