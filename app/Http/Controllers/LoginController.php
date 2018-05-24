@@ -12,10 +12,13 @@ class LoginController extends Controller
         $user=Login::join('persona','login.idlogin', '=', 'persona.login_idlogin')
                     ->where('login.user',$request->user)
                     ->where('login.password',$request->password)
-                    ->pluck('persona.idpersona');
+                    ->get();
         if($user->count()){
             $data = [
-                'id'=>$user[0]
+                'data'=>[
+                    'id'=>$user[0]->idpersona,
+                    'type'=>$user[0]->rango
+                ]
             ];
         }
         else{
