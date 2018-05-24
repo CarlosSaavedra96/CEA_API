@@ -16,6 +16,11 @@ use App\Login;
 
 Route::get('login', 'LoginController@login');
 
+Route::get('perfil/atleta/{id}','PersonaController@atleta');
+Route::get('perfil/entrenador/{id}','PersonaController@entrenador');
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
