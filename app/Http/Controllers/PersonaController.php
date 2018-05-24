@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Persona;
 use App\Http\Resources\Atleta as AtletaResource;
+use App\Http\Resources\Entrenador as EntrenadorResource;
 
 class PersonaController extends Controller
 {
@@ -21,7 +22,13 @@ class PersonaController extends Controller
     }
 
     public function entrenador($id){
-
+        $entrenador = Persona::join('entrenador','persona.idpersona', '=', 'entrenador.persona_idpersona')
+                            ->join('disciplina_has_entrenador','disciplina_has_entrenador.entrenador_persona_idpersona', '=', 'entrenador.persona_idpersona')
+                            ->join('disciplina','disciplina_has_entrenador.disciplina_iddisciplina', '=', 'disciplina.iddisciplina')
+                            ->join('municipio','persona.municipio_idmunicipio', '=', 'municipio.idmunicipio')
+                            ->where('persona.idpersona',$id)
+                            ->get();
+        return new EntrenadorResource($entrenador);
     }
 
     public function entrenadorAtleta($id){
