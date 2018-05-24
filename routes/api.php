@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'LoginController@login');
 
+Route::post('crear-entrenador','LoginController@createUser');
+
 Route::get('perfil/atleta/{id}','PersonaController@atleta');
 Route::get('perfil/entrenador/{id}','PersonaController@entrenador');
 Route::get('entrenador/{id}','PersonaController@entrenadorAtleta');

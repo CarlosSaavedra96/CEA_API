@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Persona;
+use App\Municipio;
 use App\Http\Resources\Atleta as AtletaResource;
 use App\Http\Resources\Entrenador as EntrenadorResource;
 use App\Http\Resources\AtletasEntrenadorCollection;
@@ -49,4 +50,5 @@ class PersonaController extends Controller
                         ->get();
         return new AtletasEntrenadorCollection($atletas);
     }
+
 }

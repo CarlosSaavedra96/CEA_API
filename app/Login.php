@@ -8,4 +8,5 @@ class Login extends Model
 {
     //
     protected $table = 'login';
+    protected $primaryKey = 'idlogin';
 }
