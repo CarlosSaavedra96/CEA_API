@@ -17,4 +17,10 @@ class CompetenciasController extends Controller
                                     ->get();
         return new CompetenciasCollection($competencias);
     }
+
+    public function resultados(Request $request){
+        Competencias::where('atleta_idpersona',$request->idpersona)
+                    ->where('idcompetencias',$request->idcompetencia)
+                    ->update(['resultadocompetencia'=>$request->resultado]);
+    }
 }

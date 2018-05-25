@@ -23,6 +23,7 @@ Route::get('entrenador/{id}','PersonaController@entrenadorAtleta');
 Route::get('atletas/{id}','PersonaController@atletasEntrenador');
 
 Route::get('competencias/{id}','CompetenciasController@get');
+Route::post('resultados','CompetenciasController@resultados');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
